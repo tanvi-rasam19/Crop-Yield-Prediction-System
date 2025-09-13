@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://images.pexels.com/photos/6216870/pexels-photo-6216870.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;  /* To make the text visible on the background */
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5); /* Adding a semi-transparent black background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Crop Yield Prediction</h1>
+        <p class="lead">Enter the details below to predict the crop yield.</p>
+
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="Year">Year:</label>
+                <input type="text" class="form-control" id="Year" name="Year" required>
+            </div>
+
+            <div class="form-group">
+                <label for="average_rain_fall_mm_per_year">Average Rainfall (mm/year):</label>
+                <input type="text" class="form-control" id="average_rain_fall_mm_per_year" name="average_rain_fall_mm_per_year" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pesticides_tonnes">Pesticides (tonnes):</label>
+                <input type="text" class="form-control" id="pesticides_tonnes" name="pesticides_tonnes" required>
+            </div>
+
+            <div class="form-group">
+                <label for="avg_temp">Average Temperature (°C):</label>
+                <input type="text" class="form-control" id="avg_temp" name="avg_temp" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Area">Country name:</label>
+                <input type="text" class="form-control" id="Area" name="Area" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Item">Item:</label>
+                <input type="text" class="form-control" id="Item" name="Item" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <h3 class="mt-5">Predicted Crop Yield: {{ prediction[0] }}</h3>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
